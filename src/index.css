@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background-color: #ffffff;
+  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
+  /* Chrome, Edge, Safari */
+  -ms-overflow-style: none;
+  /* IE & Edge */
+}
+
+body::-webkit-scrollbar {
+  /*display: none;*/
+  
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism card effect */
+.glassEffect {
+  -webkit-backdrop-filter: blur(5px) saturate(100%);
+  backdrop-filter: blur(5px) saturate(100%);
+  background-color: rgba(237, 240, 245, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.hero-bg-img {
+  background-image: url("./assets/cap1.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
+  /* background-position: center; */
+}
+
+/* --------------- Welcome Section Styles -------------- */
+
+.text-darkBrown {
+  color: #000000;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.05;
+}
+
+.clip-text-welcome {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #f4efe7;
+  clip-path: inset(0 0 100% 0);
+  white-space: nowrap;
+  transition: none;
+}
+
+@media (max-width: 768px) {
+  .responsive-mobile {
+    position: absolute;
+    top: 33%;
+  }
+}
+
+/* -------------- Choose Section Styles ----------------- */
+.choose-title-break {
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.choose-title-clip {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000000;
+  clip-path: inset(100% 0 0 0);
+  white-space: wrap;
+  transition: none;
+  z-index: 100;
+}
+
+.title-part {
+  overflow: hidden;
+}
+
+/* ------------------ Sticky Section Style ------------------- */
+.sticky-cols {
+  padding: 0rem;
+}
+
+.sticky-cols .col {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  will-change: transform;
+}
+
+.sticky-cols .col h1 {
+  color: #b1a696;
+  width: 60%;
+}
+
+.sticky-cols .col p {
+  color: #b1a696;
+  width: auto;
+}
+
+.sticky-cols .col-2 {
+  scale: 1;
+  transform: translateX(100%);
+}
+
+.sticky-cols .col .col-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sticky-cols .col-content,
+.sticky-cols .col-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+.sticky-cols .col-3 {
+  transform: translateX(100%) translateY(100%);
+  padding: 0.5rem;
+}
+
+.sticky-cols .col-4 {
+  transform: translateX(100%) translateY(100%);
+}
+
+.sticky-cols .col-content-wrapper {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sticky-cols .col-content-wrapper,
+.sticky-cols .col-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 3rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+.sticky-cols .col-content-wrapper-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sticky-cols .col-img-1,
+.sticky-cols .col-img-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sticky-cols .col-img-2 {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+}
+
+.sticky-cols .col-img-2 {
+  transform: scale(1);
+}
+
+.sticky-cols .line {
+  overflow: hidden;
+}
+
+.sticky-cols .line span {
+  display: block;
+  will-change: transform;
+}
