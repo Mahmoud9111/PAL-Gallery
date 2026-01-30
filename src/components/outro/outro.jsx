@@ -38,9 +38,9 @@ const Outro = () => {
             <div className="relative w-full h-full rounded-[6.5rem] overflow-hidden">
                 <div className="responsive-mobile">
                     {/* Background image (down layer) */}
-                    <div className="outro-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('./5.jpg')` }} />
+                    <div className="outro-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('./4.jpg')` }} />
                     {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-[1] md:block hidden" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-[1] md:block hidden" />
 
                     {/* Mobile image fallback */}
                     <div className="block lg:hidden mt-6 mb-6">
@@ -54,31 +54,12 @@ const Outro = () => {
 
                 </div>
                 <div className="h-full p-4 flex flex-col md:justify-center">
-                    <div className="relative">
+                    <div className="relative flex items-center justify-center h-full">
                         <h1
-                            className="text-[#ffffff] text-start text-6xl md:text-9xl font-bold tracking-wider lg:absolute lg:bottom-44 lg:left-2"
+                            className="text-[#ffffff] text-center text-8xl md:text-[12rem] lg:text-[10rem] font-bold tracking-wider z-10"
                         >
-                            Electrical & Landscaping
-
+                            PAL ENGINEERING
                         </h1>
-
-                        <div className="w-full h-auto absolute md:top-64 top-24 flex md:flex-row flex-col md:justify-between md:items-end">
-                            <h2
-                                className="text-start lg:mt-0 md:text-[#f4efe7] text-[#b1a696] text-2xl font-bold md:tracking-wider leading-5 flex flex-col gap-1"
-                                style={{ textShadow: '2px 2px 4px #000' }}
-                            >
-                                <span>Closer to</span>
-                                <span>Nature—Closer</span>
-                                <span>to Yourself</span>
-                            </h2>
-
-                            <p
-                                className="md:w-[20%] w-[80%] text-[#f4efe7] text-[0.7rem] font-bold  md:font-medium tracking-wide lg:text-end mt-2 text-justify"
-                                style={{ textShadow: '2px 2px 4px #000' }}
-                            >
-                                Spend unforgettable and remarkable time in the Californian desert with—Capsules.
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

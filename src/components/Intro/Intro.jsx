@@ -148,8 +148,8 @@ const Intro = () => {
         
         tl.to(image1Targets, {
             scale: 1.01, // Animates image from 0.7 to 0.9 scale (70% to 90% size)
-            borderRadius: "10.5rem", // Sets rounded corners for the image% to 70% size)
-            duration: 5.5, // Takes 60% of the total scroll distance to complete
+            borderRadius: "5.5rem", // Sets rounded corners for the image% to 70% size)
+            duration: 20, // Takes 60% of the total scroll distance to complete
             ease: "power2.out", // Easing: starts fast, ends slow (decelerates)
             // Phase 2: Image transitions to full view (keeps at 1.0 scale)
         })
@@ -165,7 +165,7 @@ const Intro = () => {
                 {
                     opacity: 1,
                     x: 0, // Move to final position
-                    duration:  5.5,
+                    duration:  8.5,
                     ease: "power2.out",
                 },
                 "-=0.4" // Start during phase 3
@@ -177,7 +177,7 @@ const Intro = () => {
                 image1Targets,
                 {
                     scale: 0.95, // Scale down to 75% to make room for new images
-                    duration:  5.5,
+                    duration:  8.5,
                     ease: "power2.inOut",
                 },
                 "+=0.2" // Start after a small delay
@@ -208,7 +208,7 @@ const Intro = () => {
                     {
                         opacity: 1,
                         x: 0, // Move to final position
-                        duration:5.5,
+                        duration:8.5,
                         ease: "power2.out",
                     },
                     "+=0.2" // Start after phase 9 completes
@@ -225,8 +225,8 @@ const Intro = () => {
             tl.to(
                 image2Targets,
                 {
-                    scale: 0.95, // Scale down to 95% to make room for new image
-                    duration:5.5,
+                    scale: 0.96, // Scale down to 95% to make room for new image
+                    duration:8.5,
                     ease: "power2.inOut",
                 },
                 "+=0.2" // Start after a small delay
@@ -245,7 +245,7 @@ const Intro = () => {
                     y: 0,
                     scale: 1.01,
                     borderRadius: "6.5rem",
-                    duration: 20.5,
+                    duration: 20,
                     ease: "power2.out",
                 },
                 "-=10" // Start before the scale-down animation completes (overlaps)
@@ -257,7 +257,7 @@ const Intro = () => {
                     {
                         opacity: 1,
                         x: 0,
-                        duration: 5.5,
+                        duration: 8.5,
                         ease: "power2.out",
                     },
                     "+=0.2"
@@ -302,22 +302,9 @@ const Intro = () => {
             ref={containerRef}
             className="intro-section relative w-full mx-auto h-screen bg-[#ffffff] overflow-hidden"
         >
-            {/* ScrollVelocity Background - Behind everything */}
-            <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: -1000 }}>
-                <ScrollVelocity
-                    velocity={50}
-                    damping={50}
-                    numCopies={6}
-                    velocityMapping={{ input: [0, 1000], output: [0, 5] }}
-                    className="text-black"
-                    parallaxClassName="bg-white"
-                >
-                    PAL ENGINEERING&nbsp;
-                </ScrollVelocity>
-            </div>
 
             {/* Main Capsule Image */}
-            <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8">
+            <div className="absolute inset-0 flex items-center justify-center p-2 md:p-4">
                 <div
                     ref={imageContainerRef}
                     className="w-full h-full relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem]"

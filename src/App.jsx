@@ -9,6 +9,8 @@ import ProjectDetail from './components/projectDetail/ProjectDetail'
 import Intro from './components/Intro/Intro'
 import Horizantal from './components/horizantalimages/horizantal'
 import Outro from './components/outro/outro'
+import LayoutTextFlipDemo from './components/layout-text-flip-demo/layout-text-flip-demo'
+import Choose2 from './components/choose2/Choose2'
 function App() {
   return (
     <BrowserRouter>
@@ -20,10 +22,10 @@ function App() {
               <Hero />
               <Choose />
               <Intro/>
-
+              <LayoutTextFlipDemo/>
               <StickyCols />
+              <Choose2 />
               <Horizantal/>
-              <Outro />
             </>
           } />
           <Route path="/start" element={<HomePage />} />

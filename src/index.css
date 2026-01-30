@@ -109,6 +109,23 @@ body {
   overflow: hidden;
 }
 
+/* -------------- Choose2 Section Styles ----------------- */
+.choose2-title-clip {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #000000;
+  clip-path: inset(100% 0 0 0);
+  white-space: wrap;
+  transition: none;
+  z-index: 100;
+}
+
+.title2-part {
+  overflow: hidden;
+}
+
 /* ------------------ Sticky Section Style ------------------- */
 .sticky-cols {
   padding: 0rem;
