@@ -9,7 +9,7 @@ const Outro = ({ project }) => {
     
     // Use project data if provided, otherwise use defaults
     const outroData = project?.outro || {
-        image: '/4.jpg',
+        image: `${import.meta.env.BASE_URL}4.jpg`,
         title: 'PAL ENGINEERING',
         leftText: '',
         rightText: ''

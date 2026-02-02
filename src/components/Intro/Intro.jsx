@@ -22,9 +22,9 @@ const Intro = ({ project }) => {
 
     // Use project data if provided, otherwise use defaults
     const introData = project?.intro?.images || [
-        { src: "/4.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
-        { src: "/5.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
-        { src: "/3.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." }
+        { src: `${import.meta.env.BASE_URL}4.jpg`, title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
+        { src: `${import.meta.env.BASE_URL}5.jpg`, title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
+        { src: `${import.meta.env.BASE_URL}3.jpg`, title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." }
     ];
 
     useGSAP(() => {

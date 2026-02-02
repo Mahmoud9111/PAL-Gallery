@@ -16,21 +16,21 @@ const Horizantal = ({ project }) => {
       id: "1",
       title: "General Engineering Projects",
       description: "Comprehensive engineering solutions covering a wide range of construction and infrastructure projects.",
-      image: "/4.jpg",
+      image: `${import.meta.env.BASE_URL}4.jpg`,
       difficulty: "Advanced"
     },
     {
       id: "2",
       title: "Asphalt Specialist",
       description: "Expert asphalt paving and road construction services with years of experience.",
-      image: "/5.jpg",
+      image: `${import.meta.env.BASE_URL}5.jpg`,
       difficulty: "Expert"
     },
     {
       id: "3",
       title: "Electrical & Landscaping",
       description: "Integrated electrical and landscaping services for residential and commercial properties.",
-      image: "/6.jpg",
+      image: `${import.meta.env.BASE_URL}6.jpg`,
       difficulty: "Professional"
     },
   ];

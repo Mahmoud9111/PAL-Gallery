@@ -13,7 +13,7 @@ const Hero = ({ project }) => {
 
     // Use project data if provided, otherwise use defaults
     const heroData = project?.hero || {
-        backgroundImage: "./2.jpg",
+        backgroundImage: `${import.meta.env.BASE_URL}2.jpg`,
         title: "Electrical & Landscaping",
         subtitle: "Closer to Nature—Closer to Yourself",
         description: "Spend unforgettable and remarkable time in the Californian desert with—Capsules."

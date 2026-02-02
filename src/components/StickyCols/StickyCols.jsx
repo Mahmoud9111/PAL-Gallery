@@ -14,17 +14,17 @@ const StickyCols = ({ project }) => {
         {
             title: "Enjoy the view through—the wide panoramic glass window",
             description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
-            image: "./4.jpg"
+            image: `${import.meta.env.BASE_URL}4.jpg`
         },
         {
             title: "Enjoy the view through—the wide panoramic glass window",
             description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
-            image: "./5.jpg"
+            image: `${import.meta.env.BASE_URL}5.jpg`
         },
         {
             title: "Enjoy the view through—the wide panoramic glass window",
             description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
-            image: "./6.jpg"
+            image: `${import.meta.env.BASE_URL}6.jpg`
         }
     ];
 

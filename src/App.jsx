@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { HashRouter, Routes, Route } from "react-router-dom"
 import MainLayout from './layouts/MainLayout'
 import HomePage from './components/HomePage/HomePage'
 import ProjectPage from './components/ProjectPage/ProjectPage'
 import PreloaderII from './components/Preloader/PreloaderII'
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={
@@ -17,7 +17,7 @@ function App() {
           <Route path="/project/:id" element={<ProjectPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
