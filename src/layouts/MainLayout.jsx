@@ -28,7 +28,7 @@ const MainLayout = () => {
     });
 
     return (
-        <>
+        <>  
             <Navbar />
             <div id="smooth-wrapper">
                 <div id="smooth-content">

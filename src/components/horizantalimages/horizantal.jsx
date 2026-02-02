@@ -5,43 +5,37 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-const projects = [
-  {
-    id: "1",
-    number: "01",
-    title: "General Engineering Projects",
-    location: "U.S.A.",
-    tags: ["#CONSTRUCTION", "#ENGINEERING", "#INFRASTRUCTURE"],
-    image: "/4.jpg",
-    description: "Comprehensive engineering solutions covering a wide range of construction and infrastructure projects across the United States. Our team specializes in delivering high-quality engineering services that meet the highest standards of safety and efficiency.",
-    details: "This project encompasses various engineering disciplines including structural, civil, and mechanical engineering. We've successfully completed numerous projects that have contributed to the nation's infrastructure development."
-  },
-  {
-    id: "2",
-    number: "02",
-    title: "Asphalt Specialist",
-    location: "U.S.A.",
-    tags: ["#ASPHALT", "#ROADS", "#PAVING"],
-    image: "/5.jpg",
-    description: "Expert asphalt paving and road construction services. Our specialized team brings years of experience in creating durable, high-quality road surfaces that withstand the test of time and heavy traffic.",
-    details: "We utilize state-of-the-art equipment and premium materials to ensure long-lasting results. Our asphalt projects include highways, parking lots, driveways, and commercial paving solutions."
-  },
-  {
-    id: "3",
-    number: "03",
-    title: "Electrical & Landscaping",
-    location: "U.S.A.",
-    tags: ["#ELECTRICAL", "#LANDSCAPING", "#CONSTRUCTION"],
-    image: "/6.jpg",
-    description: "Integrated electrical and landscaping services that combine functionality with aesthetic appeal. We provide comprehensive solutions for both residential and commercial properties.",
-    details: "Our services include electrical installation, maintenance, and upgrades, combined with professional landscaping design and implementation. We create beautiful outdoor spaces that are both functional and visually stunning."
-  },
-]
-
-const Horizantal = () => {
+const Horizantal = ({ project }) => {
   const containerRef = useRef(null)
   const scrollTriggerRef = useRef(null)
   const [currentIndex, setCurrentIndex] = useState(0)
+  
+  // Use project data if provided, otherwise use defaults
+  const horizontalData = project?.horizontal?.projects || [
+    {
+      id: "1",
+      title: "General Engineering Projects",
+      description: "Comprehensive engineering solutions covering a wide range of construction and infrastructure projects.",
+      image: "/4.jpg",
+      difficulty: "Advanced"
+    },
+    {
+      id: "2",
+      title: "Asphalt Specialist",
+      description: "Expert asphalt paving and road construction services with years of experience.",
+      image: "/5.jpg",
+      difficulty: "Expert"
+    },
+    {
+      id: "3",
+      title: "Electrical & Landscaping",
+      description: "Integrated electrical and landscaping services for residential and commercial properties.",
+      image: "/6.jpg",
+      difficulty: "Professional"
+    },
+  ];
+  
+  const projects = horizontalData;
 
   useEffect(() => {
     const initScrollTrigger = () => {
@@ -142,7 +136,7 @@ const Horizantal = () => {
               <div className="flex flex-col items-start gap-6 mt-8">
                 {/* Difficulty/Tag Badge */}
                 <div className="bg-gray-100/90 backdrop-blur-sm rounded-full px-5 py-2.5">
-                  <span className="text-gray-900 text-sm font-medium">Easy</span>
+                  <span className="text-gray-900 text-sm font-medium">{project.difficulty || "Standard"}</span>
                 </div>
 
                 {/* Main Title */}

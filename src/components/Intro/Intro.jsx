@@ -6,7 +6,7 @@ import ScrollVelocity from "../ScrollVelocity/ScrollVelocity";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Intro = () => {
+const Intro = ({ project }) => {
     const containerRef = useRef(null);
     const imageRef = useRef(null);
     const imageContainerRef = useRef(null);
@@ -19,6 +19,13 @@ const Intro = () => {
     const thirdImageRef = useRef(null);
     const thirdImageContainerRef = useRef(null);
     const thirdTextOverlayRef = useRef(null);
+
+    // Use project data if provided, otherwise use defaults
+    const introData = project?.intro?.images || [
+        { src: "/4.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
+        { src: "/5.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." },
+        { src: "/3.jpg", title: "Your Title Here", subtitle: "Your subtitle goes here, describing the image or section in a short line." }
+    ];
 
     useGSAP(() => {
         const container = containerRef.current;
@@ -315,8 +322,8 @@ const Intro = () => {
                 >
                     <img
                         ref={imageRef}
-                        src="/4.jpg"
-                        alt="Classic Capsule"
+                        src={introData[0].src}
+                        alt={introData[0].title}
                         className="intro-image w-full h-full object-cover rounded-[2.5rem] md:rounded-[3rem] shadow-2xl"
                         style={{
                             transformOrigin: "center center",
@@ -329,10 +336,10 @@ const Intro = () => {
                         className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
                     >
                         <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            Your Title Here
+                            {introData[0].title}
                         </h2>
                         <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            Your subtitle goes here, describing the image or section in a short line.
+                            {introData[0].subtitle}
                         </p>
                     </div>
                 </div>
@@ -350,8 +357,8 @@ const Intro = () => {
                 >
                     <img
                         ref={secondImageRef}
-                        src="/5.jpg"
-                        alt="Second Capsule"
+                        src={introData[1].src}
+                        alt={introData[1].title}
                         className="intro-image w-full h-full object-cover rounded-[2.5rem] md:rounded-[3rem] shadow-2xl"
                         style={{
                             transformOrigin: "center center",
@@ -364,10 +371,10 @@ const Intro = () => {
                         className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
                     >
                         <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            Your Title Here
+                            {introData[1].title}
                         </h2>
                         <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            Your subtitle goes here, describing the image or section in a short line.
+                            {introData[1].subtitle}
                         </p>
                     </div>
                 </div>
@@ -385,8 +392,8 @@ const Intro = () => {
                 >
                     <img
                         ref={thirdImageRef}
-                        src="/3.jpg"
-                        alt="Third Capsule"
+                        src={introData[2].src}
+                        alt={introData[2].title}
                         className="intro-image w-full h-full object-cover rounded-[2.5rem] md:rounded-[3rem]"
                         style={{
                             transformOrigin: "center center",
@@ -399,10 +406,10 @@ const Intro = () => {
                         className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
                     >
                         <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            Your Title Here
+                            {introData[2].title}
                         </h2>
                         <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            Your subtitle goes here, describing the image or section in a short line.
+                            {introData[2].subtitle}
                         </p>
                     </div>
                 </div>

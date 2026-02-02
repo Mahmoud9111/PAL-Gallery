@@ -4,43 +4,9 @@ import { Button } from "../ui/button"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useNavigate } from "react-router-dom"
+import { projects } from "../../data/projects"
 
 gsap.registerPlugin(ScrollTrigger)
-
-const projects = [
-  {
-    id: "1",
-    number: "01",
-    title: "General Engineering Projects",
-    location: "U.S.A.",
-    tags: ["#CONSTRUCTION", "#ENGINEERING", "#INFRASTRUCTURE"],
-    image: "/3.jpg",
-  },
-  {
-    id: "2",
-    number: "02",
-    title: "Asphalt Specialist",
-    location: "U.S.A.",
-    tags: ["#ASPHALT", "#ROADS", "#PAVING"],
-    image: "/2.jpg",
-  },
-  {
-    id: "3",
-    number: "03",
-    title: "Electrical & Landscaping",
-    location: "U.S.A.",
-    tags: ["#ELECTRICAL", "#LANDSCAPING", "#CONSTRUCTION"],
-    image: "/1.jpg",
-  },
-  {
-    id: "4",
-    number: "03",
-    title: "Electrical & Landscaping",
-    location: "U.S.A.",
-    tags: ["#ELECTRICAL", "#LANDSCAPING", "#CONSTRUCTION"],
-    image: "/1.jpg",
-  },
-]
 
 export default function HomePage() {
   const [selectedIndustry] = useState("ALL")

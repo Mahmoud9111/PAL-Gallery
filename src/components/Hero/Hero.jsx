@@ -5,11 +5,19 @@ import cap1Bg from "../../assets/cap1.png";
 import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive";
 
-const Hero = () => {
+const Hero = ({ project }) => {
 
     const isMobHero = useMediaQuery({
         query: "(max-width:768px)",
     });
+
+    // Use project data if provided, otherwise use defaults
+    const heroData = project?.hero || {
+        backgroundImage: "./2.jpg",
+        title: "Electrical & Landscaping",
+        subtitle: "Closer to Nature—Closer to Yourself",
+        description: "Spend unforgettable and remarkable time in the Californian desert with—Capsules."
+    };
 
 
     useGSAP(() => {
@@ -36,12 +44,12 @@ const Hero = () => {
             <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
                 <div className="responsive-mobile">
                     {/* Background image (down layer) */}
-                    <div className="hero-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('./2.jpg')` }} />
+                    <div className="hero-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('${heroData.backgroundImage}')` }} />
 
                     {/* Mobile image fallback */}
                     <div className="block lg:hidden mt-6 mb-6">
                         <img
-                            src={mobileHeroBg}
+                            src={heroData.backgroundImage}
                             alt="mobile bg"
                             className="w-full rounded-[2rem] object-cover shadow-[0_-25px_45px_-10px_rgba(255,0,0,0.15)]"
                         />
@@ -62,7 +70,7 @@ const Hero = () => {
                         <h1
                             className="text-[#ffffff] text-start text-6xl md:text-9xl font-bold tracking-wider lg:absolute lg:bottom-44 lg:left-2"
                         >
-                            Electrical & Landscaping
+                            {heroData.title}
 
                         </h1>
 
@@ -71,16 +79,16 @@ const Hero = () => {
                                 className="text-start lg:mt-0 md:text-[#f4efe7] text-[#b1a696] text-2xl font-bold md:tracking-wider leading-5 flex flex-col gap-1"
                                 style={{ textShadow: '2px 2px 4px #000' }}
                             >
-                                <span>Closer to</span>
-                                <span>Nature—Closer</span>
-                                <span>to Yourself</span>
+                                {heroData.subtitle.split('—').map((part, i) => (
+                                    <span key={i}>{part}</span>
+                                ))}
                             </h2>
 
                             <p
                                 className="md:w-[20%] w-[80%] text-[#f4efe7] text-[0.7rem] font-bold  md:font-medium tracking-wide lg:text-end mt-2 text-justify"
                                 style={{ textShadow: '2px 2px 4px #000' }}
                             >
-                                Spend unforgettable and remarkable time in the Californian desert with—Capsules.
+                                {heroData.description}
                             </p>
                         </div>
                     </div>

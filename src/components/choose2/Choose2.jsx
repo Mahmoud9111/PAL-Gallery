@@ -2,24 +2,19 @@ import { useGSAP } from "@gsap/react";
 import gsap, { SplitText } from "gsap/all";
 import { useMediaQuery } from "react-responsive";
 
-const Choose2 = () => {
+const Choose2 = ({ project }) => {
 
     const isMobD = useMediaQuery({
         query: "(max-width:768px)",
     });
     
-    // Hardcoded title lines
-    const chooseLinesLG = [
-        "Discover the",
-        "desert activities"
-    ];
+    // Use project data if provided, otherwise use defaults
+    const choose2Data = project?.choose2 || {
+        subtitle: "Discover Available Capsule",
+        title: ["Discover the", "desert activities"]
+    };
     
-    const chooseLinesSM = [
-        "Discover the",
-        "desert activities"
-    ];
-    
-    const chooseLines = isMobD ? chooseLinesSM : chooseLinesLG;
+    const chooseLines = choose2Data.title;
 
     useGSAP(() => {
 
@@ -66,7 +61,7 @@ const Choose2 = () => {
 
     return (
         <section className="choose2-section w-full h-dvh p-8 pt-10 bg-white">
-            <p className='text-[1.4rem] lg:text-[1.6rem] text-[#eae5dd] choose2-subtitle'>Discover Available Capsule<span>®</span></p>
+            <p className='text-[1.4rem] lg:text-[1.6rem] text-[#eae5dd] choose2-subtitle'>{choose2Data.subtitle}<span>®</span></p>
             <div className="lg:mt-10 mt-7 title2-part origin-bottom ">
                 {
                     chooseLines.map((line, index) => (

@@ -1,70 +1,69 @@
-import gsap from "gsap/all";
-import mobileHeroBg from "../../assets/hero-mobile.png";
-import { useGSAP } from "@gsap/react";
-import { useMediaQuery } from "react-responsive";
+import { useRef } from 'react';
+import banner from '../../assets/showcase-img.png';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
-const Outro = () => {
-
-    const isMobHero = useMediaQuery({
-        query: "(max-width:768px)",
-    });
-
+const Outro = ({ project }) => {
+    const outroConRef = useRef(null);
+    const outroImgRef = useRef(null);
+    
+    // Use project data if provided, otherwise use defaults
+    const outroData = project?.outro || {
+        image: '/4.jpg',
+        title: 'PAL ENGINEERING',
+        leftText: '',
+        rightText: ''
+    };
 
     useGSAP(() => {
-        if (!isMobHero) {
-            gsap.set(".outro-section .outro-img", {
-                scale: 1.8
-            });
-            
-            gsap.to(".outro-section .outro-img", {
-                yPercent: "-5",
-                stagger: 0.02,
-                scale: 1.1,
-                duration: 0.5,
-                ease: "power1.inOut",
+        if (!outroConRef.current || !outroImgRef.current) return;
+
+        gsap.fromTo(outroImgRef.current,
+            {
+                scale: 1.3, // Initial scale
+            },
+            {
+                scale: 1, // Final scale
+                ease: "none",
                 scrollTrigger: {
-                    trigger: ".outro-section",
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1.5,
-                    // markers: true
+                    trigger: outroConRef.current,
+                    start: "top bottom-=20%",
+                    end: "bottom top+=20%",
+                    scrub: true,
+                    // markers: true,
                 }
-            });
-        };
-    }, [isMobHero]);
+            }
+        );
+
+    }, { scope: outroConRef });
 
     return (
-        <section className="outro-section w-dvw md:h-dvh h-[100vh] md:p-2 p-2.5 mb-20 bg-white">
-            <div className="relative w-full h-full rounded-[6.5rem] overflow-hidden">
-                <div className="responsive-mobile">
-                    {/* Background image (down layer) */}
-                    <div className="outro-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('./4.jpg')` }} />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-[1] md:block hidden" />
+        <div ref={outroConRef} className="w-screen h-[75vh] p-8 overflow-hidden">
+            <div className='w-full h-full relative overflow-hidden rounded-[5rem] p-4'>
+                <img
+                    ref={outroImgRef} src={outroData.image} alt={outroData.title} className='w-full h-full object-cover' />
 
-                    {/* Mobile image fallback */}
-                    <div className="block lg:hidden mt-6 mb-6">
-                        <img
-                            src={mobileHeroBg}
-                            alt="mobile bg"
-                            className="w-full rounded-[2rem] object-cover shadow-[0_-25px_45px_-10px_rgba(255,0,0,0.15)]"
-                        />
-                    </div>
-
-
-                </div>
-                <div className="h-full p-4 flex flex-col md:justify-center">
-                    <div className="relative flex items-center justify-center h-full">
-                        <h1
-                            className="text-[#ffffff] text-center text-8xl md:text-[12rem] lg:text-[10rem] font-bold tracking-wider z-10"
+                <h1 className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[5vw] font-bold text-[#f4efe7]'>{outroData.title}</h1>
+                <div className='absolute bottom-5 px-4 w-full'>
+                    <div className="w-full h-auto flex md:flex-row flex-col md:justify-between md:items-end">
+                        <h2
+                            className="text-start lg:mt-0 md:text-[#f4efe7] text-[#b1a696] text-2xl font-bold md:tracking-wider leading-5 flex flex-col gap-1"
+                            style={{ textShadow: '2px 2px 4px #000' }}
                         >
-                            PAL ENGINEERING
-                        </h1>
+                            {outroData.leftText}
+                        </h2>
+
+                        <p
+                            className="md:w-[20%] w-[80%] text-[#f4efe7] text-[0.7rem] font-bold  md:font-medium tracking-wide lg:text-end mt-2 text-justify"
+                            style={{ textShadow: '2px 2px 4px #000' }}
+                        >
+                            {outroData.rightText}
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-    );
-};
+        </div>
+    )
+}
 
 export default Outro;

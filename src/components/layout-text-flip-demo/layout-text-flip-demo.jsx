@@ -137,13 +137,19 @@ export const LayoutTextFlip = ({
 // DEMO COMPONENT (Example Usage)
 // ============================================
 
-export default function LayoutTextFlipDemo() {
+export default function LayoutTextFlipDemo({ project }) {
+  // Use project data if provided, otherwise use defaults
+  const textFlipData = project?.textFlip || {
+    text: "Welcome to",
+    words: ["Aceternity UI", "Fight Club", "The Matrix", "The Jungle"]
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-white">
       <div className="relative mx-4 my-4 flex flex-col items-center justify-center text-black gap-4 text-center sm:mx-0 sm:mb-0 sm:flex-row">
         <LayoutTextFlip
-          text="Welcome to rege"
-          words={["Aceternity UI", "Fight Club", "The Matrix", "The Jungle"]}
+          text={textFlipData.text}
+          words={textFlipData.words}
         />
       </div>
       <p className="mt-8 text-center text-xl max-w-7xl mx-auto text-black md:text-2xl lg:text-7xl ">

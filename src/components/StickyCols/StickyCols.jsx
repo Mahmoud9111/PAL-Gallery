@@ -5,9 +5,28 @@ import colimg2 from "../../assets/cap2-square.jpg";
 import colimg3 from "../../assets/cap3-square.jpg";
 import { useState } from "react";
 
-const StickyCols = () => {
+const StickyCols = ({ project }) => {
 
     const [reveal, setReveal] = useState(false);
+    
+    // Use project data if provided, otherwise use defaults
+    const stickyData = project?.stickyCols?.sections || [
+        {
+            title: "Enjoy the view through—the wide panoramic glass window",
+            description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
+            image: "./4.jpg"
+        },
+        {
+            title: "Enjoy the view through—the wide panoramic glass window",
+            description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
+            image: "./5.jpg"
+        },
+        {
+            title: "Enjoy the view through—the wide panoramic glass window",
+            description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
+            image: "./6.jpg"
+        }
+    ];
 
     useGSAP(() => {
         gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -79,22 +98,16 @@ const StickyCols = () => {
                 <div className="col col-1 ">
                     <div className="col-content ">
                         <div className="col-content-wrapper">
-                            <h1 className="text-5xl md:text-6xl text-white font-bold leading-auto">Enjoy the view
-                                <br />
-                                through—the wide
-                                <br />
-                                panoramic glass
-                                <br />
-                                window
+                            <h1 className="text-5xl md:text-6xl text-white font-bold leading-auto">
+                                {stickyData[0].title}
                             </h1>
                             <div className="col-content-para flex items-center gap-4 justify-between">
                                 <div className="flex items-center gap-0 justify-center">
                                     <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#aaa091]">1</h3>
                                     <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#524e4b]">3</h3>
                                 </div>
-                                <p className={`text-base md:text-lg text-white font-medium  ${!reveal ? "mr-6" : "mr-0"}`}> Get closer to the desert nature than ever before
-                                    <br />
-                                    and admire this unique, breathtaking landscape.
+                                <p className={`text-base md:text-lg text-white font-medium  ${!reveal ? "mr-6" : "mr-0"}`}>
+                                    {stickyData[0].description}
                                 </p>
                             </div>
 
@@ -104,53 +117,41 @@ const StickyCols = () => {
                 <div className="col col-2">
                     <div className="col-img col-img-1">
                         <div className="col-img-wrapper">
-                            <img src={'./4.jpg'} alt="img" />
+                            <img src={stickyData[0].image} alt="img" />
                         </div>
                     </div>
                     <div className="col col-img-2 p-2">
                         <div className="col-img-wrapper">
-                            <img src={'./5.jpg'} alt="img" />
+                            <img src={stickyData[1].image} alt="img" />
                         </div>
                     </div>
                 </div>
                 <div className="col col-3">
                     <div className="col-content-wrapper">
-                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">Enjoy the view
-                            <br />
-                            through—the wide
-                            <br />
-                            panoramic glass
-                            <br />
-                            window
+                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">
+                            {stickyData[1].title}
                         </h1>
                         <div className={`col-content-para flex items-center gap-4 justify-between ${reveal ? "ml-0" : "ml-6"}`}>
                             <div className="flex items-center gap-0 justify-center">
                                 <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#aaa091]">{(reveal) ? "3" : "2"}</h3>
                                 <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#524e4b]">3</h3>
                             </div>
-                            <p className="text-base md:text-lg font-medium"> Get closer to the desert nature than ever before
-                                <br />
-                                and admire this unique, breathtaking landscape.
+                            <p className="text-base md:text-lg font-medium">
+                                {stickyData[1].description}
                             </p>
                         </div>
                     </div>
                     <div className="col-content-wrapper-2">
-                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">Enjoy the view
-                            <br />
-                            through—the wide
-                            <br />
-                            panoramic glass
-                            <br />
-                            window
+                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">
+                            {stickyData[2].title}
                         </h1>
                         <div className="col-content-para flex items-center gap-4 justify-between">
                             <div className="flex items-center gap-0 justify-center">
                                 {/* <h3 className="border-1 px-3 py-1 rounded-full text-[#aaa091]">3</h3>
                                 <h3 className="border-1 px-3 py-1 rounded-full text-[#524e4b]">3</h3> */}
                             </div>
-                            <p className={`text-base md:text-lg font-medium  ${!reveal ? "mr-0" : "mr-6"}`}> Get closer to the desert nature than ever before
-                                <br />
-                                and admire this unique, breathtaking landscape.
+                            <p className={`text-base md:text-lg font-medium  ${!reveal ? "mr-0" : "mr-6"}`}>
+                                {stickyData[2].description}
                             </p>
                         </div>
                     </div>
@@ -158,7 +159,7 @@ const StickyCols = () => {
                 <div className="col col-4">
                     <div className="col-img col-img-1">
                         <div className="col-img-wrapper">
-                            <img src={'./6.jpg'} alt="img" />
+                            <img src={stickyData[2].image} alt="img" />
                         </div>
                     </div>
                 </div>
