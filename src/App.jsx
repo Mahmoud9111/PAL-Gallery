@@ -5,6 +5,8 @@ import ProjectPage from './components/ProjectPage/ProjectPage'
 import PreloaderII from './components/Preloader/PreloaderII'
 import DraggableCardsDemo from './components/draggableCards/draggable-cards'
 import Footer from './components/footer/footer'
+import TextBorderDemo from './components/textBorder/textBorder'
+
 function App() {
   return (
     <HashRouter>
@@ -12,6 +14,8 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={
             <>
+            <TextBorderDemo/>
+              <PreloaderII />
               <HomePage />
               <DraggableCardsDemo />
               <Footer />

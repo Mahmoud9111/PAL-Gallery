@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 // import { ArrowRight, Menu } from "lucide-react";
+import GradientText from "../GradientText/GradientText";
 
 import "./preloaderII.css";
 
@@ -27,6 +28,7 @@ export default function PreloaderII() {
         const splits = createSplitTexts(splitElements);
 
         gsap.set(splits.logoChars.chars, { x: "100%" });
+        gsap.set(".preloader-start", { opacity: 0 });
 
         gsap.set(
             [
@@ -93,40 +95,39 @@ export default function PreloaderII() {
                 ease: "power4.inOut",
             }, "-=0.1")
             .to(
-                ".preloader-progress",
+                ".preloader-start",
                 {
-                    opacity: 0,
-                    duration: 0.7,
-                    ease: "power3.out",
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power4.inOut",
                 },
-                "<"
+                "+=0.15"
             )
-            .to(
-                ".preloader-mask",
-                {
-                    scale: 6,
-                    duration: 4,
-                    ease: "power3.out",
-                },
-                "<"
-            )
-            .to(
-                ".preloader-mask",
-                {
-                    delay: 1,
-                    opacity: 0,
-                    display: "none",
-                },
-                "<"
-            );
+
+
+
     }, []);
 
     return (
-        <div className="size-full fixed z-51 overflow-hidden pointer-events-none">
+        <section className="relative w-full h-screen overflow-hidden bg-[#ffffff]">
             <div className="preloader-progress">
                 <div className="preloader-progress-bar"></div>
-                <div className="preloader-logo">
-                    <h1>Capsule</h1>
+                <button 
+                    className="preloader-logo cursor-pointer hover:opacity-80 transition-opacity"
+                    onClick={() => window.location.href = '/'}
+                    aria-label="Go to homepage"
+                >
+                    <h1>PALSD</h1>
+                </button>
+                <div className="preloader-start">
+                    <GradientText
+                        colors={["#274BFF", "#46F9FF", "#3770FF"]}
+                        animationSpeed={8}
+                        showBorder={false}
+                        className="text-7xl font-bold tracking-tight"
+                    >
+                        Start
+                    </GradientText>
                 </div>
             </div>
 
@@ -140,6 +141,6 @@ export default function PreloaderII() {
                     </p>
                 </div>
             </div>
-        </div >
+        </section>
     );
 }
