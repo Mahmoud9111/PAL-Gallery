@@ -3,6 +3,8 @@ import MainLayout from './layouts/MainLayout'
 import HomePage from './components/HomePage/HomePage'
 import ProjectPage from './components/ProjectPage/ProjectPage'
 import PreloaderII from './components/Preloader/PreloaderII'
+import DraggableCardsDemo from './components/draggableCards/draggable-cards'
+import Footer from './components/footer/footer'
 function App() {
   return (
     <HashRouter>
@@ -11,6 +13,8 @@ function App() {
           <Route path="/" element={
             <>
               <HomePage />
+              <DraggableCardsDemo />
+              <Footer />
             </>
           } />
           <Route path="/start" element={<HomePage />} />

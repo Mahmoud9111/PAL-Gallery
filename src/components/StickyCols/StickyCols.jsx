@@ -93,7 +93,7 @@ const StickyCols = ({ project }) => {
     });
 
     return (
-        <section className="sticky-cols w-screen overflow-hidden bg-white">
+        <section className="sticky-cols w-screen overflow-hidden bg-[#fbfbfb]">
             <div className="sticky-cols-wrapper relative w-full h-screen ">
                 <div className="col col-1 ">
                     <div className="col-content ">

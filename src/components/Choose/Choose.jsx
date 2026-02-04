@@ -69,7 +69,7 @@ const Choose = ({ project }) => {
     });
 
     return (
-        <section className="choose-section w-full h-dvh p-8 pt-10 bg-white">
+        <section className="choose-section w-full h-dvh p-8 pt-10 bg-[#fbfbfb]">
             <p className='text-[1.4rem] lg:text-[1.6rem] text-[#eae5dd] choose-subtitle'>{chooseData.subtitle}<span>®</span></p>
             <div className="lg:mt-10 mt-7 title-part origin-bottom ">
                 {

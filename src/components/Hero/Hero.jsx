@@ -40,7 +40,7 @@ const Hero = ({ project }) => {
     }, [isMobHero]);
 
     return (
-        <section className="hero-section w-dvw md:h-dvh h-[100vh] md:p-2 p-2.5 mb-20 bg-white">
+        <section className="hero-section w-dvw md:h-dvh h-[100vh] md:p-2 p-2.5 mb-20 bg-[#fbfbfb]">
             <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden">
                 <div className="responsive-mobile">
                     {/* Background image (down layer) */}

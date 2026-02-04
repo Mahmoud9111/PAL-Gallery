@@ -38,7 +38,7 @@ const Outro = ({ project }) => {
     }, { scope: outroConRef });
 
     return (
-        <div ref={outroConRef} className="w-screen h-[75vh] p-8 overflow-hidden">
+        <div ref={outroConRef} className="w-screen h-[75vh] p-8 overflow-hidden bg-[#fbfbfb]">
             <div className='w-full h-full relative overflow-hidden rounded-[5rem] p-4'>
                 <img
                     ref={outroImgRef} src={outroData.image} alt={outroData.title} className='w-full h-full object-cover' />

@@ -1,0 +1,36 @@
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    padding: 2rem 0;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-text {
+    font-size: clamp(4rem, 10vw, 12rem);
+    font-weight: 400;
+    color: #f4efe7;
+    letter-spacing: -0.02em;
+    padding-right: 2rem;
+    font-family: inherit;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}

@@ -123,7 +123,7 @@ export const LayoutTextFlip = ({
 
       <span
         ref={containerRef}
-        className="relative inline-flex items-center justify-center overflow-hidden rounded-md border border-transparent bg-white px-8 py-6 font-sans text-6xl font-bold tracking-tight text-blue-500 shadow-xl ring shadow-black/10 ring-black/10 drop-shadow-2xl md:text-8xl lg:text-9xl"
+        className="relative inline-flex items-center justify-center overflow-hidden rounded-md border border-transparent bg-[#fbfbfb] px-8 py-6 font-sans text-6xl font-bold tracking-tight text-blue-500 shadow-xl ring shadow-black/10 ring-black/10 drop-shadow-2xl md:text-8xl lg:text-9xl"
       >
         <span ref={wordRef} className={cn("inline-block whitespace-nowrap")}>
           {displayedWord}

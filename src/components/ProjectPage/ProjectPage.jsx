@@ -10,6 +10,8 @@ import StickyCols from "../StickyCols/StickyCols"
 import Choose2 from "../choose2/Choose2"
 import Horizantal from "../horizantalimages/horizantal"
 import Outro from "../outro/outro"
+import DraggableCardsDemo from '../draggableCards/draggable-cards'
+import Footer from '../footer/footer'
 
 export default function ProjectPage() {
   const { id } = useParams()
@@ -18,7 +20,7 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#fbfbfb]">
         <div className="text-center">
           <h1 className="text-2xl font-light mb-4">Project not found</h1>
           <Button onClick={() => navigate("/")}>Go Back</Button>
@@ -28,7 +30,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Header with Back Button */}
       <header className="border-b border-gray-200 sticky top-0 bg-white z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -51,7 +53,8 @@ export default function ProjectPage() {
       <StickyCols project={project} />
       <Choose2 project={project} />
       <Horizantal project={project} />
-      <Outro project={project} />
+      <DraggableCardsDemo />
+      <Footer />
     </div>
   )
 }

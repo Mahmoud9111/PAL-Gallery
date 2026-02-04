@@ -111,7 +111,7 @@ const Horizantal = ({ project }) => {
     >
       {/* Horizontal Scroll Section */}
       <section 
-        className="flex flex-nowrap h-[100vh] p-4 m-4 gap-4 "
+        className="flex flex-nowrap h-[100vh] p-4 m-4 gap-4 bg-[#fbfbfb]"
         style={{ width: `${projects.length * 75}vw` }}
       >
         {projects.map((project) => (

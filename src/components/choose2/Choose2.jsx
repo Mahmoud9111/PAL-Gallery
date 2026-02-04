@@ -41,7 +41,7 @@ const Choose2 = ({ project }) => {
             tl.fromTo(
                 ".title2-part",
                 { height: "10vh" },
-                { height: `${isMobD ? "22vh" : "50vh"}`, ease: "none" }
+                { height: `${isMobD ? "22vh" : "40vh"}`, ease: "none" }
             );
         }
 
@@ -51,8 +51,8 @@ const Choose2 = ({ project }) => {
             {
                 clipPath: "inset(0% 0% 0% 0%)",
                 ease: "none",
-                stagger: 0.2,
-                duration: 1,
+                stagger: 0.1,
+                duration: 1.9,
             },
             "<" // 👈 runs at the same time as the previous animation
         );
@@ -60,7 +60,7 @@ const Choose2 = ({ project }) => {
     });
 
     return (
-        <section className="choose2-section w-full h-dvh p-8 pt-10 bg-white">
+        <section className="choose2-section w-full  p-8 pt-10 bg-[#fbfbfb]">
             <p className='text-[1.4rem] lg:text-[1.6rem] text-[#eae5dd] choose2-subtitle'>{choose2Data.subtitle}<span>®</span></p>
             <div className="lg:mt-10 mt-7 title2-part origin-bottom ">
                 {

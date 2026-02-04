@@ -231,3 +231,30 @@ body {
   display: block;
   will-change: transform;
 }
+
+/* ------------------ Gallery Slider Styles ------------------- */
+.gallery-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-box {
+  display: flex;
+  animation: autoRun var(--time, 10s) linear infinite;
+}
+
+.gallery-box h3 {
+  font-size: clamp(8rem, 20vw, 16rem);
+  font-weight: 700;
+  margin: 0 3rem;
+  color: #000000;
+}
+
+@keyframes autoRun {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

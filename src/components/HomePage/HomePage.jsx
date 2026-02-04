@@ -85,7 +85,7 @@ export default function HomePage() {
         className=""
       >
         {/* Horizontal Scroll Section */}
-        <section className=" w-[4200px] h-screen flex-shrink-0 flex  bg-white">
+        <section className=" w-[4200px] h-screen flex-shrink-0 flex  bg-[#fbfbfb]">
           <div className="w-full h-full px-6 flex items-center">
             <div className="flex items-center gap-32 h-full w-full mt-64">
 

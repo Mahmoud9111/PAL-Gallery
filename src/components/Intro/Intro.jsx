@@ -292,7 +292,18 @@ const Intro = ({ project }) => {
         };
     }, []);
 
-
+    // Generate repeating Capsules® elements
+    const generateCapsules = (quantity = 8) => {
+        const capsules = [];
+        for (let i = 1; i <= quantity; i++) {
+            capsules.push(
+                <h3 key={i} style={{ "--index": i }} className='tracking-tighter'>
+                    PALSD
+                </h3>
+            );
+        }
+        return capsules;
+    };
 
     return (
 
@@ -307,11 +318,11 @@ const Intro = ({ project }) => {
         
         <section
             ref={containerRef}
-            className="intro-section relative w-full mx-auto h-screen bg-[#ffffff] overflow-hidden"
+            className="intro-section relative w-full mx-auto h-screen bg-[#fbfbfb] overflow-hidden"
         >
 
             {/* Main Capsule Image */}
-            <div className="absolute inset-0 flex items-center justify-center p-2 md:p-4">
+            <div className="absolute inset-0 flex items-center justify-center p-2 md:p-4 z-[10]">
                 <div
                     ref={imageContainerRef}
                     className="w-full h-full relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem]"
@@ -412,6 +423,17 @@ const Intro = ({ project }) => {
                             {introData[2].subtitle}
                         </p>
                     </div>
+                </div>
+            </div>
+
+            {/* Gallery Slider with repeating text */}
+            <div className="gallery-slider absolute inset-0 z-[1] overflow-hidden flex items-center justify-center">
+                <div
+                    className="gallery-box flex gap-8 whitespace-nowrap"
+                    style={{ "--time": "20s" }}
+                >
+                    {generateCapsules(8)}
+                    {generateCapsules(8)}
                 </div>
             </div>
 
