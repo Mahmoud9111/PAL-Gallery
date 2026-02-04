@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap, { SplitText } from "gsap/all";
 import { useMediaQuery } from "react-responsive";
 import { chooseLinesLG, chooseLinesSM } from "../../data/welcome";
+import TrueFocus from "../TrueFocus/TrueFocus";
 
 const Choose = ({ project }) => {
 
@@ -81,23 +82,22 @@ const Choose = ({ project }) => {
                 }
             </div>
             <div className="choose-sec w-full flex lg:flex-row flex-col justify-center items-start gap-10 lg:mt-0">
-                <div className='lg:w-1/2 w-full text-[#b1a696] lg:text-[3rem] text-[1.6rem] md:leading-[1.1] lg:mt-0 mt-8 lg:pr-16'>
-                    <p>{chooseData.description}</p>
-                </div>
-                <div className='lg:w-1/2 w-full'>
+
+                <div className=' w-full'>
                     <div className="lg:w-[30%] w-[60%]">
                         <p className="text-[1.4rem] lg:text-[1.6rem] text-[#eae5dd]">All projects are built
                             based on the same principles:</p>
                     </div>
-                    <div className="flex flex-1 flex-wrap justify-start items-start gap-2 mt-8">
-                        {chooseData.features.map((feature, index) => (
-                            <div 
-                                key={index}
-                                className={`border-[1px] ${index % 2 === 0 ? 'border-[#b1a696] text-[#b1a696]' : 'border-[#f4efe7] text-[#f4efe7]'} lg:text-[3rem] text-[1.6rem] px-[28px] py-[8px] rounded-full`}
-                            >
-                                {feature}
-                            </div>
-                        ))}
+                    <div className="mt-8 max-w-[40%] text-black text-left">
+                        <TrueFocus
+                            sentence={chooseData.features.join(" ")}
+                            manualMode={false}
+                            blurAmount={5}
+                            borderColor="#274BFF"
+                            animationDuration={0.5}
+                            pauseBetweenAnimations={1}
+                            showBordersOnAll={true}
+                        />
                     </div>
                 </div>
             </div>

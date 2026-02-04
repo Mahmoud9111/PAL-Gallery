@@ -49,7 +49,7 @@ const Intro = ({ project }) => {
         // Set initial states - "before" state: image at container sizesible
         // gsap.set() instantly sets properties without animation (initial state)
         gsap.set(imageRef.current, {
-            scale:0.60, // Start image at container size (100% of container))
+            scale:0.50, // Start image at container size (100% of container))
             opacity: 1, // Image is fully visible from the start
             borderRadius: "22rem", // Sets rounded corners for the image
         });
@@ -57,9 +57,9 @@ const Intro = ({ project }) => {
         // Set initial states for image1 container - same as image1
         if (imageContainerRef.current) {
             gsap.set(imageContainerRef.current, {
-                scale: 0.60,
+                scale: 0.50,
                 opacity: 1,
-                borderRadius: "15rem",
+                borderRadius: "22rem",
             });
         }
 
@@ -69,7 +69,7 @@ const Intro = ({ project }) => {
             gsap.set(secondImageRef.current, {
                 opacity: 1, // Always visible
                 y: viewportHeight, // Start from bottom of viewport
-                scale: 1.0, // Fixed scale at 0.9
+                scale: 1.0, // Fixed scale at 1.0
                 borderRadius: "20.5rem",
             });
         }
@@ -270,6 +270,25 @@ const Intro = ({ project }) => {
                     "+=0.2"
                 );
             }
+        }
+
+        // Add scale animation for first image only (like Outro)
+        if (imageRef.current && imageContainerRef.current) {
+            gsap.fromTo(imageRef.current,
+                {
+                    scale: 1.3,
+                },
+                {
+                    scale: 1,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: imageContainerRef.current,
+                        start: "top bottom-=20%",
+                        end: "bottom top+=20%",
+                        scrub: true,
+                    }
+                }
+            );
         }
 
         // Cleanup function - runs when component unmounts or dependencies change (prevents memory leaks)
