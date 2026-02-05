@@ -3,6 +3,7 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 // import { ArrowRight, Menu } from "lucide-react";
 import GradientText from "../GradientText/GradientText";
+import { TextHoverEffect } from "../textBorder/textBorder";
 
 import "./preloaderII.css";
 
@@ -21,13 +22,12 @@ export default function PreloaderII() {
         }
 
         const splitElements = [
-            { key: "logoChars", selector: ".preloader-logo h1", type: "chars" },
             { key: "footerLines", selector: ".preloader-footer p", type: "lines" },
         ];
 
         const splits = createSplitTexts(splitElements);
 
-        gsap.set(splits.logoChars.chars, { x: "100%" });
+        gsap.set(".preloader-logo", { opacity: 0, scale: 0.8 });
         gsap.set(".preloader-start", { opacity: 0 });
 
         gsap.set(
@@ -37,32 +37,31 @@ export default function PreloaderII() {
             { y: "100%" }
         );
 
-        function animateProgress(duration = 3.5) {
+        function animateProgress(duration = 1.5) {
             const tl = gsap.timeline();
-            const counterSteps = 3;
-            let currentProgress = 0;
 
-            for (let i = 0; i < counterSteps; i++) {
-                const finalStep = i === counterSteps - 1;
-                const targetProgress = finalStep
-                    ? 1
-                    : Math.min(currentProgress + Math.random() * 0.3 + 0.1, 0.9);
-                currentProgress = targetProgress;
+            // Set initial state
+            gsap.set(".preloader-progress-bar", {
+                scale: 0,
+                opacity: 0,
+                rotation: -5,
+            });
 
-                tl.to(".preloader-progress-bar", {
-                    scaleX: targetProgress,
-                    duration: duration / counterSteps,
-                    ease: "power3.out",
-                });
-            }
+            tl.to(".preloader-progress-bar", {
+                scale: 1,
+                opacity: 1,
+                rotation: 0,
+                duration: duration,
+                ease: "back.out(1.4)",
+            });
 
             return tl;
         }
 
         const tl = gsap.timeline({ delay: 0.5 });
-        tl.to(splits.logoChars.chars, {
-            x: "0%",
-            stagger: 0.05,
+        tl.to(".preloader-logo", {
+            opacity: 1,
+            scale: 1,
             duration: 1,
             ease: "power4.inOut",
         })
@@ -74,34 +73,30 @@ export default function PreloaderII() {
                     duration: 1,
                     ease: "power4.inOut",
                 },
-                "0.25"
+                "+=1.95"
+            )
+            .to(
+                ".preloader-logo",
+                {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.85,
+                    ease: "power2.inOut",
+                },
+                "-=2"
             )
             .add(animateProgress(), "<")
             .set(".preloader-progress", { backgroundClip: "var(--base-300)" })
-            .to(
-                splits.logoChars.chars,
-                {
-                    x: "-100%",
-                    stagger: 0.05,
-                    duration: 1,
-                    ease: "power4.inOut",
-                },
-                "+=0.15"
-            )
-            .to(splits.footerLines.lines, {
-                y: "-100%",
-                stagger: 0.1,
-                duration: 0.5,
-                ease: "power4.inOut",
-            }, "-=0.1")
+
+
             .to(
                 ".preloader-start",
                 {
                     opacity: 1,
-                    duration: 1,
-                    ease: "power4.inOut",
+                    duration: 0.3,
+                    ease: "power2.inOut",
                 },
-                "+=0.15"
+                "-=0.55"
             )
 
 
@@ -112,19 +107,30 @@ export default function PreloaderII() {
         <section className="relative w-full h-screen overflow-hidden bg-[#ffffff]">
             <div className="preloader-progress">
                 <div className="preloader-progress-bar"></div>
-                <button 
-                    className="preloader-logo cursor-pointer hover:opacity-80 transition-opacity"
+                <div 
+                    className="preloader-logo cursor-pointer"
                     onClick={() => window.location.href = '/'}
                     aria-label="Go to homepage"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && (window.location.href = '/')}
+                    style={{ maxWidth: '400px', height: '100px',  }}
                 >
-                    <h1>PALSD</h1>
-                </button>
+                    <TextHoverEffect 
+                        text="PALSD" 
+                        gradientColors={["#274BFF", "#46F9FF", "#3770FF"]}
+                        animateGradient={true}
+                        animationSpeed={8}
+                        strokeWidth="1.2"
+                    />
+                </div>
+
                 <div className="preloader-start">
                     <GradientText
-                        colors={["#274BFF", "#46F9FF", "#3770FF"]}
+                        colors={["#ffffff"]}
                         animationSpeed={8}
                         showBorder={false}
-                        className="text-7xl font-bold tracking-tight"
+                        className="text-6xl  font-family-inter"
                     >
                         Start
                     </GradientText>
@@ -135,9 +141,9 @@ export default function PreloaderII() {
 
             <div className="preloader-content">
                 <div className="preloader-footer">
-                    <p className="text-sm">
-                        Meet Capsules®—modern and cozy<br />
-                        houses, in the California desert.
+                    <p className="text-xl">
+                        Meet PALSD <br />
+                        houses, in the California .
                     </p>
                 </div>
             </div>

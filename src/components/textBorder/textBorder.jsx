@@ -4,13 +4,26 @@ import { gsap } from "gsap";
 export const TextHoverEffect = ({
   text,
   duration = 0,
+  fontSize = "text-7xl",
+  fontWeight = "font-bold",
+  fontFamily = "font-[helvetica]",
+  strokeColor = "stroke-neutral-200 dark:stroke-neutral-800",
+  strokeWidth = "0.3",
+  gradientColors = ["#274BFF", "#46F9FF", "#3770FF"],
+  viewBox = "0 0 300 100",
+  className = "",
+  animateGradient = true,
+  animationSpeed = 8,
 }) => {
   const svgRef = useRef(null);
   const maskGradientRef = useRef(null);
   const animatedTextRef = useRef(null);
+  const strokeGradientRef = useRef(null);
+  const tweenRef = useRef(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
+  const [gradientOffset, setGradientOffset] = useState(0);
 
   // Update mask position based on cursor
   useEffect(() => {
@@ -58,19 +71,67 @@ export const TextHoverEffect = ({
     }
   }, []);
 
+  // Animate gradient for stroke
+  useEffect(() => {
+    if (!animateGradient) return;
+
+    const animationObj = { progress: 0 };
+
+    tweenRef.current = gsap.to(animationObj, {
+      progress: 100,
+      duration: animationSpeed,
+      ease: 'none',
+      repeat: -1,
+      yoyo: true,
+      onUpdate: () => {
+        setGradientOffset(animationObj.progress);
+      },
+    });
+
+    return () => {
+      if (tweenRef.current) {
+        tweenRef.current.kill();
+      }
+    };
+  }, [animateGradient, animationSpeed]);
+
   return (
     <svg
       ref={svgRef}
       width="100%"
       height="100%"
-      viewBox="0 0 300 100"
+      viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-      className="select-none"
+      className={`select-none ${className}`}
     >
       <defs>
+        {/* Animated stroke gradient */}
+        <linearGradient
+          ref={strokeGradientRef}
+          id="strokeGradient"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+        >
+          {[...gradientColors, gradientColors[0]].map((color, index) => {
+            const totalStops = gradientColors.length + 1;
+            const baseOffset = (index / totalStops) * 100;
+            const adjustedOffset = (baseOffset + gradientOffset) % 100;
+            
+            return (
+              <stop 
+                key={index}
+                offset={`${adjustedOffset}%`}
+                stopColor={color}
+              />
+            );
+          })}
+        </linearGradient>
+
         <linearGradient
           id="textGradient"
           gradientUnits="userSpaceOnUse"
@@ -78,15 +139,13 @@ export const TextHoverEffect = ({
           cy="50%"
           r="25%"
         >
-          {hovered && (
-            <>
-              <stop offset="0%" stopColor="#eab308" />
-              <stop offset="25%" stopColor="#ef4444" />
-              <stop offset="50%" stopColor="#3b82f6" />
-              <stop offset="75%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </>
-          )}
+          {hovered && gradientColors.map((color, index) => (
+            <stop 
+              key={index}
+              offset={`${(index / (gradientColors.length - 1)) * 100}%`}
+              stopColor={color}
+            />
+          ))}
         </linearGradient>
 
         <radialGradient
@@ -118,8 +177,9 @@ export const TextHoverEffect = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        strokeWidth={strokeWidth}
+        stroke={animateGradient ? "url(#strokeGradient)" : undefined}
+        className={`fill-transparent ${!animateGradient ? strokeColor : ''} ${fontFamily} ${fontSize} ${fontWeight}`}
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {text}
@@ -132,8 +192,9 @@ export const TextHoverEffect = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        strokeWidth="0.3"
-        className="fill-transparent stroke-neutral-200 font-[helvetica] text-7xl font-bold dark:stroke-neutral-800"
+        strokeWidth={strokeWidth}
+        stroke={animateGradient ? "url(#strokeGradient)" : undefined}
+        className={`fill-transparent ${!animateGradient ? strokeColor : ''} ${fontFamily} ${fontSize} ${fontWeight}`}
       >
         {text}
       </text>
@@ -145,9 +206,9 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         stroke="url(#textGradient)"
-        strokeWidth="0.3"
+        strokeWidth={strokeWidth}
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-7xl font-bold"
+        className={`fill-transparent ${fontFamily} ${fontSize} ${fontWeight}`}
       >
         {text}
       </text>
@@ -159,7 +220,18 @@ export const TextHoverEffect = ({
 export default function TextBorderDemo() {
   return (
     <div className="h-[40rem] flex items-center justify-center">
-      <TextHoverEffect text="PALSD" />
+      <TextHoverEffect 
+        text="PALSD"
+        fontSize="text-7xl"
+        fontWeight="font-bold"
+        fontFamily="font-[helvetica]"
+        strokeWidth="0.3"
+        gradientColors={["#274BFF", "#46F9FF", "#3770FF"]}
+        viewBox="0 0 300 100"
+        duration={0}
+        animateGradient={true}
+        animationSpeed={8}
+      />
     </div>
   );
 }

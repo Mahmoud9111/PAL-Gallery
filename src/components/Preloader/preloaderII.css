@@ -20,12 +20,13 @@
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) scaleX(0);
+    transform: translateX(-50%);
     width: 55%;
     height: 100%;
-    background-color: #ffffff;
-    transform-origin: left;
-    will-change: transform;    
+    background: linear-gradient(135deg, #00ffee, #0059ff);
+    opacity: 0;
+    will-change: opacity;   
+     
 
 }
 
@@ -74,7 +75,7 @@
     background-color: var(--base-100);
     mask:
         linear-gradient(var(--base-300), var(--base-300)),
-        url("/preloader-bg.svg") center/40% no-repeat;
+        url("/preloader-bg.svg") center/20% no-repeat;
     mask-composite: subtract;
     will-change: transform;
     z-index: 1;
@@ -86,7 +87,7 @@
 
 .preloader-footer {
     position: absolute;
-    bottom: 4rem;
+    bottom: 28rem;
     left: 50%;
     transform: translateX(-50%);
     width: 30%;
