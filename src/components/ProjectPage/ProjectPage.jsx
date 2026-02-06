@@ -1,15 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom"
-import { ArrowLeft } from "lucide-react"
 import { Button } from "../ui/button"
 import { projects } from "../../data/projects"
 import Hero from "../Hero/Hero"
 import Choose from "../Choose/Choose"
 import Intro from "../Intro/Intro"
-import LayoutTextFlipDemo from "../layout-text-flip-demo/layout-text-flip-demo"
 import StickyCols from "../StickyCols/StickyCols"
 import Choose2 from "../choose2/Choose2"
 import Horizantal from "../horizantalimages/horizantal"
 import Outro from "../outro/outro"
+import LayoutTextFlipDemo from "../layout-text-flip-demo/layout-text-flip-demo"
 import DraggableCardsDemo from '../draggableCards/draggable-cards'
 import Footer from '../footer/footer'
 
@@ -31,20 +30,6 @@ export default function ProjectPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Header with Back Button */}
-      <header className="border-b border-gray-200 sticky top-0 bg-white z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Button>
-        </div>
-      </header>
-
       {/* All Components with Project Data */}
       <Hero project={project} />
       <Choose project={project} />

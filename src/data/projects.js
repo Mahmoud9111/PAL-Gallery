@@ -13,8 +13,8 @@ export const projects = [
     // Hero section data
     hero: {
       backgroundImage: getImagePath("3.jpg"),
-      title: "General Engineering Projects",
-      subtitle: "Building Tomorrow's Infrastructure Today",
+      title: "General Engineering Projects PALSD",
+      subtitle: "Comprehensive engineering solutions for construction and infrastructure projects.",
       description: "Comprehensive engineering solutions for construction and infrastructure projects."
     },
     // Intro section images with overlays
@@ -26,12 +26,12 @@ export const projects = [
           subtitle: "Precision engineering for lasting infrastructure"
         },
         {
-          src: getImagePath("4.jpg"),
+          src: getImagePath("3.jpg"),
           title: "Civil Engineering",
           subtitle: "Creating foundations for communities"
         },
         {
-          src: getImagePath("5.jpg"),
+          src: getImagePath("3.jpg"),
           title: "Mechanical Systems",
           subtitle: "Innovative solutions for complex challenges"
         }
@@ -108,6 +108,9 @@ export const projects = [
       ]
     }
   },
+
+
+
   {
     id: "2",
     number: "02",
@@ -215,6 +218,9 @@ export const projects = [
       ]
     }
   },
+
+
+
   {
     id: "3",
     number: "03",

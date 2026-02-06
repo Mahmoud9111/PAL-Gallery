@@ -60,7 +60,7 @@
     width: 100%;
     text-align: center;
     z-index: 2;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .preloader-start h1 {

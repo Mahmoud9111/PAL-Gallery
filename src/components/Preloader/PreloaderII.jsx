@@ -1,6 +1,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
+import { useNavigate } from "react-router-dom";
 // import { ArrowRight, Menu } from "lucide-react";
 import GradientText from "../GradientText/GradientText";
 import { TextHoverEffect } from "../textBorder/textBorder";
@@ -9,6 +10,7 @@ import "./preloaderII.css";
 
 gsap.registerPlugin(SplitText);
 export default function PreloaderII() {
+    const navigate = useNavigate();
     useGSAP(() => {
         function createSplitTexts(elements) {
             const splits = {};
@@ -108,12 +110,7 @@ export default function PreloaderII() {
             <div className="preloader-progress">
                 <div className="preloader-progress-bar"></div>
                 <div 
-                    className="preloader-logo cursor-pointer"
-                    onClick={() => window.location.href = '/'}
-                    aria-label="Go to homepage"
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && (window.location.href = '/')}
+                    className="preloader-logo"
                     style={{ maxWidth: '400px', height: '100px',  }}
                 >
                     <TextHoverEffect 
@@ -125,7 +122,14 @@ export default function PreloaderII() {
                     />
                 </div>
 
-                <div className="preloader-start">
+                <div 
+                    className="preloader-start cursor-pointer"
+                    onClick={() => navigate('/home')}
+                    aria-label="Start and go to homepage"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && navigate('/home')}
+                >
                     <GradientText
                         colors={["#ffffff"]}
                         animationSpeed={8}

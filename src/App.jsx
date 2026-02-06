@@ -12,16 +12,13 @@ function App() {
     <HashRouter>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={
+          <Route path="/" element={<PreloaderII />} />
+          <Route path="/home" element={
             <>
-            <TextBorderDemo/>
-              <PreloaderII />
               <HomePage />
-              <DraggableCardsDemo />
-              <Footer />
+
             </>
           } />
-          <Route path="/start" element={<HomePage />} />
           <Route path="/project/:id" element={<ProjectPage />} />
         </Route>
       </Routes>

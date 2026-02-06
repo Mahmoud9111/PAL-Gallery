@@ -49,7 +49,7 @@ const Intro = ({ project }) => {
         // Set initial states - "before" state: image at container sizesible
         // gsap.set() instantly sets properties without animation (initial state)
         gsap.set(imageRef.current, {
-            scale:0.50, // Start image at container size (100% of container))
+            scale:0.45, // Start image at container size (100% of container))
             opacity: 1, // Image is fully visible from the start
             borderRadius: "22rem", // Sets rounded corners for the image
         });
@@ -57,7 +57,7 @@ const Intro = ({ project }) => {
         // Set initial states for image1 container - same as image1
         if (imageContainerRef.current) {
             gsap.set(imageContainerRef.current, {
-                scale: 0.50,
+                scale: 0.45,
                 opacity: 1,
                 borderRadius: "22rem",
             });
@@ -154,7 +154,7 @@ const Intro = ({ project }) => {
             : [imageRef.current];
         
         tl.to(image1Targets, {
-            scale: 1.01, // Animates image from 0.7 to 0.9 scale (70% to 90% size)
+            scale: 1.0, // Animates image from 0.7 to 0.9 scale (70% to 90% size)
             borderRadius: "5.5rem", // Sets rounded corners for the image% to 70% size)
             duration: 20, // Takes 60% of the total scroll distance to complete
             ease: "power2.out", // Easing: starts fast, ends slow (decelerates)
@@ -200,8 +200,8 @@ const Intro = ({ project }) => {
                 image2Targets,
                 {
                     y: 0, // Move to center position
-                    scale: 1.01,
-                    borderRadius: "6.5rem",
+                    scale: 1.0,
+                    borderRadius: "5.5rem",
                     duration: 20.5,
                     ease: "power2.out",
                 },
@@ -232,7 +232,7 @@ const Intro = ({ project }) => {
             tl.to(
                 image2Targets,
                 {
-                    scale: 0.96, // Scale down to 95% to make room for new image
+                    scale: 0.95, // Scale down to 95% to make room for new image
                     duration:8.5,
                     ease: "power2.inOut",
                 },
@@ -250,8 +250,8 @@ const Intro = ({ project }) => {
                 image3Targets,
                 {
                     y: 0,
-                    scale: 1.01,
-                    borderRadius: "6.5rem",
+                    scale: 1.0,
+                    borderRadius: "5.5rem",
                     duration: 20,
                     ease: "power2.out",
                 },
@@ -272,20 +272,20 @@ const Intro = ({ project }) => {
             }
         }
 
-        // Add scale animation for first image only (like Outro)
+        // Add scale animation for first image only (parallax zoom effect)
         if (imageRef.current && imageContainerRef.current) {
             gsap.fromTo(imageRef.current,
                 {
-                    scale: 1.3,
+                    scale: 1.5,
                 },
                 {
                     scale: 1,
                     ease: "none",
                     scrollTrigger: {
                         trigger: imageContainerRef.current,
-                        start: "top bottom-=20%",
-                        end: "bottom top+=20%",
-                        scrub: true,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: 0.8,
                     }
                 }
             );
@@ -340,7 +340,7 @@ const Intro = ({ project }) => {
             className="intro-section relative w-full mx-auto h-screen bg-[#fbfbfb] overflow-hidden"
         >
 
-            {/* Main Capsule Image */}
+            {/* Main Image */}
             <div className="absolute inset-0 flex items-center justify-center p-2 md:p-4 z-[10]">
                 <div
                     ref={imageContainerRef}
@@ -379,7 +379,7 @@ const Intro = ({ project }) => {
             <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8" style={{ zIndex: 40 }}>
                 <div
                     ref={secondImageContainerRef}
-                    className="w-full h-full"
+                    className="w-full h-full relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem]"
                     style={{
                         transformOrigin: "center center",
                         willChange: "transform",
@@ -414,7 +414,7 @@ const Intro = ({ project }) => {
             <div className="absolute inset-0 flex items-center justify-center p-4 md:p-8" style={{ zIndex: 50 }}>
                 <div
                     ref={thirdImageContainerRef}
-                    className="w-full h-full"
+                    className="w-full h-full relative overflow-hidden rounded-[2.5rem] md:rounded-[3rem]"
                     style={{
                         transformOrigin: "center center",
                         willChange: "transform",
