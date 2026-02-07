@@ -19,7 +19,7 @@ export default function ProjectPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fbfbfb]">
+      <div className="min-h-screen flex items-center justify-center bg-[#e8e8e8]">
         <div className="text-center">
           <h1 className="text-2xl font-light mb-4">Project not found</h1>
           <Button onClick={() => navigate("/")}>Go Back</Button>
