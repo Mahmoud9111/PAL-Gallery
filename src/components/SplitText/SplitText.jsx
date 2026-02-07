@@ -15,7 +15,7 @@ const SplitText = ({
   duration = 1.25,
   ease = "power3.out",
   splitType = "chars",
-  from = { y: 400 },
+  from = { y: 300 },
   to = { y: 0 },
   threshold = 0.1,
   rootMargin = "-100px",
@@ -99,7 +99,7 @@ const SplitText = ({
               ...to,
               duration,
               ease,
-              stagger: delay / 1000,
+              stagger: delay / 500,
               scrollTrigger: {
                 trigger: el,
                 start,

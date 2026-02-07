@@ -1,13 +1,9 @@
-import gsap, { ScrollTrigger, SplitText } from "gsap/all";
+import gsap, { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import colimg1 from "../../assets/cap1-square.jpg";
 import colimg2 from "../../assets/cap2-square.jpg";
-import colimg3 from "../../assets/cap3-square.jpg";
-import { useState } from "react";
 
 const StickyCols = ({ project }) => {
-
-    const [reveal, setReveal] = useState(false);
     
     // Use project data if provided, otherwise use defaults
     const stickyData = project?.stickyCols?.sections || [
@@ -20,34 +16,13 @@ const StickyCols = ({ project }) => {
             title: "Enjoy the view through—the wide panoramic glass window",
             description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
             image: `${import.meta.env.BASE_URL}5.jpg`
-        },
-        {
-            title: "Enjoy the view through—the wide panoramic glass window",
-            description: "Get closer to the desert nature than ever before and admire this unique, breathtaking landscape.",
-            image: `${import.meta.env.BASE_URL}6.jpg`
         }
     ];
 
     useGSAP(() => {
-        gsap.registerPlugin(ScrollTrigger, SplitText);
+        gsap.registerPlugin(ScrollTrigger);
 
-        // 1️⃣ Split text lines once DOM ready
-        const textElements = document.querySelectorAll(".col-3 h1, .col-3 p");
-        textElements.forEach((element) => {
-            const split = new SplitText(element, { type: "lines", linesClass: "line" });
-            split.lines.forEach((line) => {
-                line.innerHTML = `<span>${line.textContent}</span>`;
-            });
-        });
-
-        // Refresh ScrollTrigger after split
-        ScrollTrigger.refresh();
-
-        // 2️⃣ Initial state
-        gsap.set(".col-3 .col-content-wrapper .line span", { yPercent: 0 });
-        gsap.set(".col-3 .col-content-wrapper-2 .line span", { yPercent: -125 });
-
-        // 3️⃣ Controlled phase logic using timeline (simpler and stable)
+        // Controlled phase logic using timeline
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".sticky-cols",
@@ -58,7 +33,6 @@ const StickyCols = ({ project }) => {
                 // markers: true,
             },
         });
-        tl.add(() => setReveal(false));
         // PHASE 1: Reveal col-2, hide col-1
         tl.to(".col-1", { opacity: 0, scale: 0.8, duration: 0.8 })
             .to(".col-2", { x: "0%", duration: 0.8 }, "<")
@@ -68,23 +42,7 @@ const StickyCols = ({ project }) => {
                 clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
                 duration: 0.8,
             }, "<")
-            .to(".col-img-2 img", { scale: 1.6, duration: 0.8 }, "<")
-
-        tl.add(() => setReveal(false));
-        tl.add(() => setReveal(true));
-        // PHASE 2: Switch col-2 -> col-3 content
-        tl.to(".col-2", { opacity: 0, scale: 0.8, duration: 0.8 })
-            .to(".col-3 .col-content-wrapper .line span", {
-                yPercent: -125,
-                duration: 0.8,
-            }, "<")
-        tl.to(".col-3", { x: "0%", duration: 0.8 }, "-=0.8")
-            .to(".col-4", { y: "0%", duration: 0.8 }, "<")
-            .to(".col-3 .col-content-wrapper-2 .line span", {
-                yPercent: 0,
-                delay: 0.4,
-                duration: 0.8,
-            }, "<");
+            .to(".col-img-2 img", { scale: 1.6, duration: 0.8 }, "<");
 
         return () => {
             ScrollTrigger.getAll().forEach((st) => st.kill());
@@ -97,18 +55,32 @@ const StickyCols = ({ project }) => {
             <div className="sticky-cols-wrapper relative w-full h-screen ">
                 <div className="col col-1 ">
                     <div className="col-content ">
-                        <div className="col-content-wrapper">
-                            <h1 className="text-5xl md:text-6xl text-white font-bold leading-auto">
+                        <div className="col-content-wrapper max-w-7xl mx-auto px-8 md:px-16">
+                            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-black font-bold leading-tight mt-32">
                                 {stickyData[0].title}
                             </h1>
-                            <div className="col-content-para flex items-center gap-4 justify-between">
-                                <div className="flex items-center gap-0 justify-center">
-                                    <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#aaa091]">1</h3>
-                                    <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#524e4b]">3</h3>
-                                </div>
-                                <p className={`text-base md:text-lg text-white font-medium  ${!reveal ? "mr-6" : "mr-0"}`}>
-                                    {stickyData[0].description}
-                                </p>
+                            <p className="text-lg md:text-xl lg:text-2xl text-gray-700 font-normal max-w-3xl">
+                                {stickyData[0].description}
+                            </p>
+                            
+                            <div className="flex flex-wrap items-center gap-6 mb-72">
+                                <button className="group bg-[#ffffff] hover:bg-[#ffffff] text-black font-medium  py-2 pl-6 pr-2 rounded-full transition-all duration-300 ease-in-out hover:scale-105 w-fit flex items-center gap-4 shadow-lg">
+                                    <span className="text-base md:text-xl">View All Services</span>
+                                    <div className="bg-black group-hover:bg-[#1a1a1a] w-[3.25rem] h-[3.25rem] overflow-hidden rounded-full transition-all duration-500">
+                                        <div className="flex w-[6.5rem] -translate-x-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-0">
+                                            <span className="flex w-[3.25rem] h-[3.25rem] items-center justify-center flex-shrink-0">
+                                                <svg className="w-7 h-7 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                                </svg>
+                                            </span>
+                                            <span className="flex w-[3.25rem] h-[3.25rem] items-center justify-center flex-shrink-0">
+                                                <svg className="w-7 h-7 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </button>
                             </div>
 
                         </div>
@@ -118,48 +90,43 @@ const StickyCols = ({ project }) => {
                     <div className="col-img col-img-1">
                         <div className="col-img-wrapper">
                             <img src={stickyData[0].image} alt="img" />
+                            <div className="absolute inset-0 bg-black opacity-20 pointer-events-none"></div>
                         </div>
                     </div>
-                    <div className="col col-img-2 p-2">
-                        <div className="col-img-wrapper">
-                            <img src={stickyData[1].image} alt="img" />
+                    <div className="col col-img-2">
+                        <div className="col-img-wrapper !p-0 !m-0">
+                            <img src={stickyData[0].image} alt="img" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-black opacity-20 pointer-events-none"></div>
                         </div>
                     </div>
                 </div>
                 <div className="col col-3">
                     <div className="col-content-wrapper">
-                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">
+                        <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-black font-bold leading-tight mt-32">
                             {stickyData[1].title}
                         </h1>
-                        <div className={`col-content-para flex items-center gap-4 justify-between ${reveal ? "ml-0" : "ml-6"}`}>
-                            <div className="flex items-center gap-0 justify-center">
-                                <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#aaa091]">{(reveal) ? "3" : "2"}</h3>
-                                <h3 className="border-1 px-3 py-1 rounded-full text-xl text-[#524e4b]">3</h3>
-                            </div>
-                            <p className="text-base md:text-lg font-medium">
-                                {stickyData[1].description}
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col-content-wrapper-2">
-                        <h1 className="text-5xl md:text-6xl font-bold leading-auto">
-                            {stickyData[2].title}
-                        </h1>
-                        <div className="col-content-para flex items-center gap-4 justify-between">
-                            <div className="flex items-center gap-0 justify-center">
-                                {/* <h3 className="border-1 px-3 py-1 rounded-full text-[#aaa091]">3</h3>
-                                <h3 className="border-1 px-3 py-1 rounded-full text-[#524e4b]">3</h3> */}
-                            </div>
-                            <p className={`text-base md:text-lg font-medium  ${!reveal ? "mr-0" : "mr-6"}`}>
-                                {stickyData[2].description}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col col-4">
-                    <div className="col-img col-img-1">
-                        <div className="col-img-wrapper">
-                            <img src={stickyData[2].image} alt="img" />
+                        <p className="text-lg md:text-xl lg:text-2xl text-gray-700 font-normal max-w-3xl">
+                            {stickyData[1].description}
+                        </p>
+                        
+                        <div className="flex flex-wrap items-center gap-6 mb-72">
+                            <button className="group bg-[#ffffff] hover:bg-[#ffffff] text-black font-medium  py-2 pl-6 pr-2 rounded-full transition-all duration-300 ease-in-out hover:scale-105 w-fit flex items-center gap-4 shadow-lg">
+                                <span className="text-base md:text-xl">View All Services</span>
+                                <div className="bg-black group-hover:bg-[#1a1a1a] w-[3.25rem] h-[3.25rem] overflow-hidden rounded-full transition-all duration-500">
+                                    <div className="flex w-[6.5rem] -translate-x-1/2 transition-transform duration-500 ease-in-out group-hover:translate-x-0">
+                                        <span className="flex w-[3.25rem] h-[3.25rem] items-center justify-center flex-shrink-0">
+                                            <svg className="w-7 h-7 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                            </svg>
+                                        </span>
+                                        <span className="flex w-[3.25rem] h-[3.25rem] items-center justify-center flex-shrink-0">
+                                            <svg className="w-7 h-7 text-[#ffffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>

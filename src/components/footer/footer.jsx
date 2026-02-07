@@ -3,10 +3,10 @@ import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useRef } from 'react';
-import { FaBehance } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import { CiLinkedin } from "react-icons/ci";
-import { FaDribbble } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import MarqueeText from '../Marquee/MarqueeText';
 import "./footertitle.css";
@@ -36,10 +36,18 @@ const Footer = () => {
 
                 <div className="w-full flex justify-between items-center mt-20">
                     <div className="flex justify-center items-center gap-1">
-                        <div className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000]'><FaBehance className="text-5xl" /></div>
-                        <div className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000]'><FaInstagram className="text-5xl" /></div>
-                        <div className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000]'><CiLinkedin className="text-5xl" /></div>
-                        <div className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000]'><FaDribbble className="text-5xl" /></div>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaFacebookF className="text-3xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaInstagram className="text-3xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaLinkedinIn className="text-3xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-3 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaXTwitter className="text-3xl" />
+                        </a>
                     </div>
 
 
@@ -126,8 +134,22 @@ const FooterTitle = () => {
             </div>
 
             <div className='footer-title w-full text-center flex justify-center items-center '>
-                <h1 className='text-[25vw] font-bold'>
-                    PALSD<sub></sub>
+                <h1 className='text-[25vw] font-bold relative'>
+                    PALSD
+                    <span className="absolute bottom-0 left-0 flex gap-1 ml-2">
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#b1a696] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaFacebookF className="text-xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#b1a696] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaInstagram className="text-xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#b1a696] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaLinkedinIn className="text-xl" />
+                        </a>
+                        <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#b1a696] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                            <FaXTwitter className="text-xl" />
+                        </a>
+                    </span>
                 </h1>
             </div>
         </section>

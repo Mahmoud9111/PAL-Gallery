@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 // import { ArrowRight, Menu } from "lucide-react";
 import GradientText from "../GradientText/GradientText";
 import { TextHoverEffect } from "../textBorder/textBorder";
@@ -11,6 +12,7 @@ import "./preloaderII.css";
 gsap.registerPlugin(SplitText);
 export default function PreloaderII() {
     const navigate = useNavigate();
+    const [canClick, setCanClick] = useState(false);
     useGSAP(() => {
         function createSplitTexts(elements) {
             const splits = {};
@@ -97,6 +99,7 @@ export default function PreloaderII() {
                     opacity: 1,
                     duration: 0.3,
                     ease: "power2.inOut",
+                    onComplete: () => setCanClick(true)
                 },
                 "-=0.55"
             )
@@ -124,11 +127,12 @@ export default function PreloaderII() {
 
                 <div 
                     className="preloader-start cursor-pointer"
-                    onClick={() => navigate('/home')}
+                    onClick={() => canClick && navigate('/home')}
                     aria-label="Start and go to homepage"
                     role="button"
                     tabIndex={0}
-                    onKeyDown={(e) => e.key === 'Enter' && navigate('/home')}
+                    onKeyDown={(e) => canClick && e.key === 'Enter' && navigate('/home')}
+                    style={{ pointerEvents: canClick ? 'auto' : 'none' }}
                 >
                     <GradientText
                         colors={["#ffffff"]}

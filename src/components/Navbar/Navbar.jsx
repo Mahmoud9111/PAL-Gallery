@@ -1,4 +1,6 @@
 import { IoMdMenu, IoMdClose } from "react-icons/io";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import GradientText from "../GradientText/GradientText";
@@ -84,8 +86,7 @@ const Navbar = () => {
     { title: "Technology", href: "#" },
     { title: "Company", href: "#" },
     { title: "Careers", href: "#" },
-    { title: "Journal", href: "#" },
-    { title: "Beta", href: "#" }
+    { title: "Journal", href: "#" }
   ];
 
   return (
@@ -121,9 +122,7 @@ const Navbar = () => {
         <div className="relative bg-white rounded-3xl shadow-2xl w-[80vw] max-w-4xl flex flex-col overflow-hidden">
           {/* Header */}
           <div className="flex items-center justify-between px-10 py-6">
-            <div className="w-10 h-10 border-2 border-black rounded-full flex items-center justify-center">
-              <div className="w-5 h-5 bg-black rounded-sm"></div>
-            </div>
+
             
             <GradientText
               colors={["#274BFF", "#46F9FF", "#3770FF"]}
@@ -151,6 +150,25 @@ const Navbar = () => {
                   {item.title}
                 </a>
               ))}
+              
+              {/* Social Media Icons */}
+              <div 
+                ref={(el) => (menuItemsRef.current[menuItems.length] = el)}
+                className="flex justify-start items-center gap-1 mt-2"
+              >
+                <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                  <FaFacebookF className="text-lg" />
+                </a>
+                <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                  <FaInstagram className="text-lg" />
+                </a>
+                <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                  <FaLinkedinIn className="text-lg" />
+                </a>
+                <a href="#" className='border-[1px] border-[#c4c1b9] rounded-full p-2 text-[#000000] transition-all duration-300 hover:bg-gray-900 hover:text-white hover:border-gray-900 hover:scale-110'>
+                  <FaXTwitter className="text-lg" />
+                </a>
+              </div>
             </div>
 
             {/* Right Side - Content Area */}

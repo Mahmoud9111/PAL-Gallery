@@ -5,6 +5,7 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useNavigate } from "react-router-dom"
 import { projects } from "../../data/projects"
+import AnimatedContent from "../AnimatedContent/AnimatedContent"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -90,7 +91,18 @@ export default function HomePage() {
             <div className="flex items-center gap-32 h-full w-full mt-64">
 
               {/* Left side - Text content */}
-              <div className="flex-shrink-0 ml-60 w-96 h-full flex flex-col justify-center">
+              <AnimatedContent
+                direction="horizontal"
+                distance={120}
+                reverse={false}
+                duration={1.2}
+                ease="power2.out"
+                initialOpacity={0}
+                animateOpacity={true}
+                scale={0.98}
+                threshold={0.2}
+                className="flex-shrink-0 ml-60 w-96 h-full flex flex-col justify-center"
+              >
                 {/* Industry Filter */}
                 <div className="mb-44">
                   <Button
@@ -111,7 +123,7 @@ export default function HomePage() {
                   </h2>
                   <h2 className="text-[8rem] leading-none font-light tracking-tight text-gray-900">History</h2>
                 </div>
-              </div>
+              </AnimatedContent>
 
               {/* Right side - Horizontal Scrolling Cards */}
               <div
@@ -121,45 +133,57 @@ export default function HomePage() {
                   flexWrap: "nowrap",
                 }}
               >
-                {projects.map((project) => (
-                  <div
+                {projects.map((project, index) => (
+                  <AnimatedContent
                     key={project.id}
-                    onClick={() => navigate(`/project/${project.id}`)}
-                    className="bg-white border border-gray-300 cursor-pointer transition-all duration-500 hover:border-blue-400 hover:shadow-lg flex-shrink-0 w-[800px]"
+                    direction="vertical"
+                    distance={80}
+                    duration={1.2}
+                    ease="power2.out"
+                    initialOpacity={0}
+                    animateOpacity={true}
+                    scale={0.95}
+                    threshold={0.3}
+                    delay={index * 0.15}
                   >
-                    {/* Header */}
-                    <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg font-light text-gray-900">N°{project.number}</span>
-                        <Info className="w-4 h-4 text-gray-500" />
+                    <div
+                      onClick={() => navigate(`/project/${project.id}`)}
+                      className="bg-white border border-gray-300 cursor-pointer transition-all duration-500  rounded-3xl hover:shadow-lg flex-shrink-0 w-[800px]"
+                    >
+                      {/* Header */}
+                      <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg font-light text-gray-900">N°{project.number}</span>
+                          <Info className="w-4 h-4 text-gray-500" />
+                        </div>
+                        <div className="flex gap-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs text-gray-600 border border-gray-300 px-2 py-1 rounded"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                      <div className="flex gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs text-gray-600 border border-gray-300 px-2 py-1 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+
+                      {/* Image */}
+                      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                        <img
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        />
+                      </div>
+
+                      {/* Footer */}
+                      <div className="p-6">
+                        <h3 className="text-2xl font-light mb-2 text-gray-900">{project.title}</h3>
+                        <p className="text-base text-gray-600 tracking-wider">{project.location}</p>
                       </div>
                     </div>
-
-                    {/* Image */}
-                    <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                      />
-                    </div>
-
-                    {/* Footer */}
-                    <div className="p-6">
-                      <h3 className="text-2xl font-light mb-2 text-gray-900">{project.title}</h3>
-                      <p className="text-base text-gray-600 tracking-wider">{project.location}</p>
-                    </div>
-                  </div>
+                  </AnimatedContent>
                 ))}
               </div>
             </div>

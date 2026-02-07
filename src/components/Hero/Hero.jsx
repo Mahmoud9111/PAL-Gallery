@@ -47,7 +47,7 @@ const Hero = ({ project }) => {
                     <div className="hero-img absolute inset-0 bg-no-repeat bg-cover bg-center z-0 md:block hidden" style={{ backgroundImage: `url('${heroData.backgroundImage}')` }} />
                     
                     {/* Black overlay */}
-                    <div className="absolute inset-0 bg-black/40 z-[1] md:block hidden" />
+                    <div className="absolute inset-0 bg-black/30 z-[1] md:block hidden" />
 
                     {/* Mobile image fallback */}
                     <div className="block lg:hidden mt-6 mb-6 relative">
@@ -215,7 +215,7 @@ const Hero = ({ project }) => {
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="text-gray-300 text-xs mb-2 font-medium">People To Rent</p>
+                                    <p className="text-gray-300 text-xs mb-2 font-medium"> To Rent</p>
                                     <div className="flex items-end justify-between">
                                         <h4 className="text-white text-4xl font-bold">123</h4>
                                         <span className="bg-white/20 rounded-full px-2.5 py-1 text-[10px] text-white flex items-center gap-0.5 font-medium">

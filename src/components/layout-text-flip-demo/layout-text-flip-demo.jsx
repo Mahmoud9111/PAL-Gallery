@@ -12,7 +12,7 @@ const LayoutTextFlipDemo = () => {
                     className="text-[10rem] md:text-[18rem] lg:text-[24rem] xl:text-[28rem] font-bold leading-none tracking-tighter text-black"
                     splitType="chars"
                     delay={50}
-                    duration={1.25}
+                    duration={2.25}
                     threshold={0.1}
                     textAlign="center"
                 />

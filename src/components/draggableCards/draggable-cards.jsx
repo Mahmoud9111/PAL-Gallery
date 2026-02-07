@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
+import GradientText from "../GradientText/GradientText";
 
 // Register GSAP plugins
 if (typeof window !== "undefined") {
@@ -296,13 +297,13 @@ export default function DraggableCardsDemo() {
       title: "Tyler Durden",
       image:
         "1.jpg",
-      className: "absolute top-10 left-[35%] rotate-[1deg]",
+      className: "absolute top-10 left-[35%] rotate-[5deg]",
     },
     {
       title: "The Narrator",
       image:
       "2.jpg",
-      className: "absolute top-20 left-[25%] rotate-[1deg]",
+      className: "absolute top-20 left-[25%] rotate-[4deg]",
     },
     {
       title: "Iceland",
@@ -320,7 +321,7 @@ export default function DraggableCardsDemo() {
       title: "Norway",
       image:
       "5.jpg",
-      className: "absolute top-20 right-[20%] rotate-[1deg]",
+      className: "absolute top-20 right-[20%] rotate-[10deg]",
     },
     {
       title: "New Zealand",
@@ -332,15 +333,22 @@ export default function DraggableCardsDemo() {
       title: "Canada",
       image:
       "5.jpg",
-      className: "absolute top-8 left-[-25%] rotate-[1deg]",
+      className: "absolute top-8 left-[-25%] rotate-[-7deg]",
     },
   ];
 
   return (
     <DraggableCardContainer className="relative flex min-h-screen w-full items-center justify-center overflow-clip">
-      <p className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black text-neutral-400 md:text-4xl dark:text-neutral-800">
-        If its your first day at Fight Club, you have to fight.
-      </p>
+      <div className="absolute top-1/2 mx-auto max-w-sm -translate-y-3/4 text-center text-2xl font-black md:text-4xl">
+        <GradientText 
+          colors={['#274BFF', '#46F9FF', '#3770FF']}
+          animationSpeed={5}
+          direction="horizontal"
+          className="text-2xl md:text-4xl font-black"
+        >
+          If its your first day at Fight Club, you have to fight.
+        </GradientText>
+      </div>
       {items.map((item, index) => (
         <DraggableCardBody key={index} className={item.className}>
           <img

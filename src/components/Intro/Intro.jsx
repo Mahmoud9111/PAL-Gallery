@@ -363,14 +363,27 @@ const Intro = ({ project }) => {
                     {/* Title & Subtitle overlay - inside the image */}
                     <div 
                         ref={textOverlayRef}
-                        className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
+                        className="absolute inset-0 z-20 flex flex-col items-start justify-between p-6 md:p-10 text-white pointer-events-none"
                     >
-                        <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            {introData[0].title}
-                        </h2>
-                        <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            {introData[0].subtitle}
-                        </p>
+                        {/* Title at top/center */}
+                        <div className="flex-1 flex flex-col justify-center">
+                            <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
+                                {introData[0].title}
+                            </h2>
+                            <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
+                                {introData[0].subtitle}
+                            </p>
+                        </div>
+                        
+                        {/* Button and description at bottom */}
+                        <div className="flex items-center gap-4 w-full">
+                            <button className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-[#d4c4b0] rounded-full flex items-center justify-center text-2xl md:text-3xl text-[#3d3a37] font-light hover:bg-[#c4b4a0] transition-colors pointer-events-auto">
+                                +
+                            </button>
+                            <p className="text-sm md:text-base lg:text-lg drop-shadow-lg leading-relaxed flex-1">
+                                {introData[0].title} boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -398,14 +411,27 @@ const Intro = ({ project }) => {
                     {/* Title & Subtitle overlay - inside the second image */}
                     <div 
                         ref={secondTextOverlayRef}
-                        className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
+                        className="absolute inset-0 z-20 flex flex-col items-start justify-between p-6 md:p-10 text-white pointer-events-none"
                     >
-                        <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            {introData[1].title}
-                        </h2>
-                        <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            {introData[1].subtitle}
-                        </p>
+                        {/* Title at top/center */}
+                        <div className="flex-1 flex flex-col justify-center">
+                            <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
+                                {introData[1].title}
+                            </h2>
+                            <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
+                                {introData[1].subtitle}
+                            </p>
+                        </div>
+                        
+                        {/* Button and description at bottom */}
+                        <div className="flex items-center gap-4 w-full">
+                            <button className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-[#d4c4b0] rounded-full flex items-center justify-center text-2xl md:text-3xl text-[#3d3a37] font-light hover:bg-[#c4b4a0] transition-colors pointer-events-auto">
+                                +
+                            </button>
+                            <p className="text-sm md:text-base lg:text-lg drop-shadow-lg leading-relaxed flex-1">
+                                {introData[1].title} boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -433,14 +459,27 @@ const Intro = ({ project }) => {
                     {/* Title & Subtitle overlay - inside the third image */}
                     <div 
                         ref={thirdTextOverlayRef}
-                        className="absolute inset-0 z-20 flex flex-col items-start justify-center p-6 md:p-10 text-white pointer-events-none"
+                        className="absolute inset-0 z-20 flex flex-col items-start justify-between p-6 md:p-10 text-white pointer-events-none"
                     >
-                        <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
-                            {introData[2].title}
-                        </h2>
-                        <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
-                            {introData[2].subtitle}
-                        </p>
+                        {/* Title at top/center */}
+                        <div className="flex-1 flex flex-col justify-center">
+                            <h2 className="text-4xl md:text-7xl font-bold drop-shadow-lg">
+                                {introData[2].title}
+                            </h2>
+                            <p className="mt-4 text-lg md:text-2xl max-w-md drop-shadow-lg">
+                                {introData[2].subtitle}
+                            </p>
+                        </div>
+                        
+                        {/* Button and description at bottom */}
+                        <div className="flex items-center gap-4 w-full">
+                            <button className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 bg-[#d4c4b0] rounded-full flex items-center justify-center text-2xl md:text-3xl text-[#3d3a37] font-light hover:bg-[#c4b4a0] transition-colors pointer-events-auto">
+                                +
+                            </button>
+                            <p className="text-sm md:text-base lg:text-lg drop-shadow-lg leading-relaxed flex-1">
+                                {introData[2].title} boasts refined aesthetics and a modern interior, creating an intimate retreat in a desert landscape.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

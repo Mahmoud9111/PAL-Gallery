@@ -6,6 +6,7 @@ import PreloaderII from './components/Preloader/PreloaderII'
 import DraggableCardsDemo from './components/draggableCards/draggable-cards'
 import Footer from './components/footer/footer'
 import TextBorderDemo from './components/textBorder/textBorder'
+import ImgShow from './components/imgshow/ImgShow'
 
 function App() {
   return (
